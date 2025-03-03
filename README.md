@@ -54,7 +54,7 @@ Go into the `public` directory and delete the `CNAME` file. Otherwise the site c
 
 Go to `src/variables/civilized.ts` and set the variable to the name of your civ.
 
-Go to `src/variables/regiont.ts` and change the keys (the left-hand side of the object) to the region glyphs of your civs, and the values (right-hand side) to the corresponding name of the region.
+Go to `src/variables/regions.ts` and change the keys (the left-hand side of the object) to the region glyphs of your civs, and the values (right-hand side) to the corresponding name of the region.
 
 That should cover the inital setup.
 
