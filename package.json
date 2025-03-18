@@ -10,7 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@picocss/pico": "^2.0.6",
+    "@picocss/pico": "^2.1.1",
     "html-entities": "^2.5.2",
     "parse-mediawiki-template": "^0.2.2",
     "pinia": "^3.0.1",
