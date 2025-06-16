@@ -19,7 +19,7 @@
     "vue": "^3.5.16"
   },
   "devDependencies": {
-    "@types/node": "^22.15.30",
+    "@types/node": "^24.0.3",
     "@types/sortablejs": "^1.15.8",
     "@vitejs/plugin-vue": "^5.2.4",
     "prettier": "^3.5.3",
