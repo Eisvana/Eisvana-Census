@@ -15,7 +15,7 @@
     "parse-mediawiki-template": "^0.2.2",
     "pinia": "^3.0.4",
     "simple-image-compressor": "^1.8.2",
-    "sortablejs": "^1.15.6",
+    "sortablejs": "^1.15.7",
     "vue": "^3.5.28"
   },
   "devDependencies": {
