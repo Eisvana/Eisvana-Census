@@ -5,7 +5,7 @@ import MultipleChoice from './MultipleChoice.vue';
 import GlyphInput from './GlyphInput.vue';
 import { reactive, toRefs } from 'vue';
 import { isUpdatingPage } from '@/variables/formMode';
-import { platforms, modes } from '@/variables/saveData';
+import { modes, platforms } from '@/variables/saveData';
 import Gallery from './Gallery.vue';
 import ImageInput from './ImageInput.vue';
 import LoadingSpinner from '../LoadingSpinner.vue';

@@ -22,7 +22,7 @@ const filteredCensusData = computed(() =>
     .toSorted((a, b) => {
       if (a.renewed === b.renewed) return a.CensusPlayer.toLowerCase() > b.CensusPlayer.toLowerCase() ? 1 : -1;
       return a.renewed > b.renewed ? 1 : -1;
-    })
+    }),
 );
 
 const updateEntries = (newPaginatedArray: CensusEntry[]) => (paginatedEntries.value = newPaginatedArray);

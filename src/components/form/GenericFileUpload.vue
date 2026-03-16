@@ -37,6 +37,7 @@ function onDrop(e: DragEvent) {
 }
 
 function filterForImages(fileList: FileList) {
+  // oxlint-disable-next-line unicorn/prefer-spread throws an error with spread syntax
   const fileArray = Array.from(fileList);
   const pictureArray = fileArray.filter((file) => file.type.startsWith('image/'));
   return pictureArray;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isMakingNewPage, isNewCitizen, isUpdatingPage } from '@/variables/formMode';
-import { onMounted, computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import BaseForm from '@/components/form/BaseForm.vue';
 import { submitCensus } from '@/helpers/censusSubmission';
 import { useWikiPageDataStore } from '@/stores/wikiPageDataStore';
@@ -54,9 +54,9 @@ async function sendForm() {
     localStorage.removeItem('lastUpdated');
     sessionStorage.removeItem('update');
     isSuccess.value = true;
-  } catch (e) {
+  } catch (error) {
     isFailed.value = true;
-    console.error('Something went wrong:', e);
+    console.error('Something went wrong:', error);
   } finally {
     isSending.value = false;
     setTimeout(() => {

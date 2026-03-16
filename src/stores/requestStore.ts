@@ -35,7 +35,7 @@ export const useRequestStore = defineStore('requests', {
         if (!isCargoResponse<CargoQueryResponse>(apiResponse)) return;
         const countString = Object.values(apiResponse.cargoquery[0].title)[0];
         if (!countString) return;
-        const count = parseInt(countString);
+        const count = Number.parseInt(countString);
         const requiredApiCalls = Math.ceil(count / limit);
         censusData.value = [];
         const apiData = Array.from({ length: requiredApiCalls }).map(async (_item, index) => {
@@ -77,14 +77,14 @@ export const useRequestStore = defineStore('requests', {
                   System,
                   Builderlink,
                 };
-              }
-            )
+              },
+            ),
           );
         });
         await Promise.all(apiData);
         this.requestSucceeded = true;
-      } catch (e) {
-        console.warn(e);
+      } catch (error) {
+        console.warn(error);
         this.requestFailed = true;
       }
     },

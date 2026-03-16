@@ -8,4 +8,4 @@ fetch(webhook, {
   body: JSON.stringify({
     content,
   }),
-})
+});

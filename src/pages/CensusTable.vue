@@ -46,7 +46,7 @@ function filterEntry({
 
 // only list the entries that are renewed for the currently selected year
 const currentRevisionEntries = computed(() =>
-  revision.value ? censusData.value.filter((item) => item.CensusRenewal.includes(revision.value)) : censusData.value
+  revision.value ? censusData.value.filter((item) => item.CensusRenewal.includes(revision.value)) : censusData.value,
 );
 
 // count the entries that are renewed for the currently selected year

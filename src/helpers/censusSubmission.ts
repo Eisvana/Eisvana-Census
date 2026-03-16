@@ -46,7 +46,7 @@ export async function submitCensus(description: string): Promise<void> {
   }
 
   const galleryPicLines = gallery
-    .map(({ desc, file, filename }) => (desc ? `${file?.name ?? filename}|${desc}` : file?.name ?? filename))
+    .map(({ desc, file, filename }) => (desc ? `${file?.name ?? filename}|${desc}` : (file?.name ?? filename)))
     .join('\n');
 
   const passBuilder = playerData.wikiName ? '' : playerData.player;
@@ -168,7 +168,9 @@ export async function submitCensus(description: string): Promise<void> {
 function constructFileFormData(fileArray: File[]): FormData {
   // initialising form data object
   const formData = new FormData();
-  fileArray.forEach((file, index) => formData.append(`files[${index}]`, file));
+  fileArray.forEach((file, index) => {
+    formData.append(`files[${index}]`, file);
+  });
 
   return formData;
 }
@@ -204,7 +206,7 @@ export async function sendBaseChangeRequest(entry: CensusEntry, newBase: string,
           ],
         },
       ],
-    })
+    }),
   );
 
   sendFormData(formData);

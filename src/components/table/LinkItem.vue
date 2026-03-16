@@ -11,7 +11,7 @@ const props = defineProps<{
 const linkObj = computed(() =>
   props.wikitext.startsWith('[')
     ? parseUserLink(props.wikitext)
-    : { text: props.wikitext, link: `${wikiLink}${props.wikitext}` }
+    : { text: props.wikitext, link: `${wikiLink}${props.wikitext}` },
 );
 </script>
 

@@ -30,7 +30,7 @@ function openModal() {
   dialogElement.value?.showModal();
   // remove the focus on the close button
   blurActiveElement();
-};
+}
 
 const closeModal = () => dialogElement.value?.close();
 

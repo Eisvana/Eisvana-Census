@@ -2,7 +2,7 @@ import { maxFilesPerMessage, maxMessageSize } from '@/variables/fileLimits';
 
 export function removeDuplicates<T>(arr: T[]): T[] {
   const uniqueSet = new Set(arr);
-  const uniqueArr = Array.from(uniqueSet);
+  const uniqueArr = [...uniqueSet];
   return uniqueArr;
 }
 

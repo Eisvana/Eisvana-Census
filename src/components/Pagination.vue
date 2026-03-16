@@ -17,8 +17,8 @@ const availablePages = computed(() => Math.ceil(props.data.length / props.pageSi
 const paginatedEntries = computed(() =>
   props.data.slice(
     currentPageZeroIndexed.value * props.pageSize,
-    currentPageZeroIndexed.value * props.pageSize + props.pageSize
-  )
+    currentPageZeroIndexed.value * props.pageSize + props.pageSize,
+  ),
 );
 
 watchEffect(() => {

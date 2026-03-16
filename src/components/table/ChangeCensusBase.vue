@@ -42,9 +42,9 @@ onMounted(async () => {
     items.value = apiResponse.cargoquery.map((item) => item.title.Name);
     emit('ready', items.value);
     isError.value = false;
-  } catch (e) {
+  } catch (error) {
     isError.value = true;
-    console.error('Something went wrong:', e);
+    console.error('Something went wrong:', error);
   }
 });
 

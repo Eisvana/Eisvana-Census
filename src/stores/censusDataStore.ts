@@ -15,7 +15,7 @@ export const useCensusDataStore = defineStore('censusData', {
     availableRevisions: (state) => {
       const revisionArray = state.censusData.flatMap((item) => item.CensusRenewal);
       const uniqueRevisions = new Set(revisionArray);
-      const uniqueRevisionArray = Array.from(uniqueRevisions);
+      const uniqueRevisionArray = [...uniqueRevisions];
       const revisionNumbers = uniqueRevisionArray.map(Number);
       const sortedRevisions = revisionNumbers.toSorted((a: number, b: number) => b - a);
       return sortedRevisions.map(String);

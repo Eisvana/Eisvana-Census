@@ -82,7 +82,7 @@ const defaultStoreObjectString = JSON.stringify(defaultStoreObject);
 // localstorage gets cleared after one week
 const currentDate = Date.now();
 const lastUpdated = localStorage.getItem('lastUpdated') ?? currentDate.toString();
-const lastUpdatedNumber = parseInt(lastUpdated);
+const lastUpdatedNumber = Number.parseInt(lastUpdated);
 if (currentDate - lastUpdatedNumber > weekInMilliseconds) localStorage.removeItem('censusForm');
 
 // kinda ugly and doesn't scale, but idk how else to do this without using an IIFE or some really ugly mapping code
@@ -97,14 +97,14 @@ const sessionStorageDataJson: CensusEntry = JSON.parse(sessionStorageData ?? '{}
 
 // if sessionstorage has our data, we use that to populate the store
 if (!isNewCitizen && sessionStorageData) {
-  const redditHosts = ['reddit.com', 'www.reddit.com', 'old.reddit.com'];
+  const redditHosts = new Set(['reddit.com', 'www.reddit.com', 'old.reddit.com']);
   localStorageDataJson.playerData.arrival = new Date(sessionStorageDataJson.CensusArrival).toISOString().split('T')[0];
   localStorageDataJson.playerData.discord = sessionStorageDataJson.CensusDiscord;
 
   const assumeRedditLink = (sessionStorageDataJson.CensusReddit ?? '').slice(1, -1).split(' ')[0];
 
   const redditHost = isValidHttpUrl(assumeRedditLink ?? '') ? new URL(assumeRedditLink).host : '';
-  const redditLinkIsReddit = redditHosts.includes(redditHost);
+  const redditLinkIsReddit = redditHosts.has(redditHost);
   localStorageDataJson.playerData.reddit =
     sessionStorageDataJson.CensusReddit && redditLinkIsReddit
       ? sessionStorageDataJson.CensusReddit.split(' ')[1].slice(0, -1)
@@ -122,7 +122,7 @@ if (!isNewCitizen && sessionStorageData) {
   const censusRedditLink = censusReddit.startsWith('[') ? censusReddit.slice(1, -1).split(' ')[0] : censusReddit;
   const isCensusRedditUrl = isValidHttpUrl(censusRedditLink);
   const censusRedditUrlHost = isCensusRedditUrl ? new URL(censusRedditLink).host : '';
-  const isRedditUrl = isCensusRedditUrl && redditHosts.includes(censusRedditUrlHost);
+  const isRedditUrl = isCensusRedditUrl && redditHosts.has(censusRedditUrlHost);
 
   const censusRedditUrlOrEmpty = isCensusRedditUrl ? censusRedditLink : '';
   localStorageDataJson.playerData.social = isRedditUrl ? '' : censusRedditUrlOrEmpty;
@@ -220,7 +220,7 @@ export const useWikiPageDataStore = defineStore('wikiPageData', {
     },
 
     async fetchWikiText(sectionData: SimplifiedSectionQueryResponseSectionObject, index: number) {
-      const sectionWikitext = this.fetchBaseSectionWikiText(parseInt(sectionData.index));
+      const sectionWikitext = this.fetchBaseSectionWikiText(Number.parseInt(sectionData.index));
       const lowerCaseHeading = sectionData.line.toLowerCase();
       const itemInSectionData = defaultSections.find((item) => item.heading.toLowerCase() === lowerCaseHeading);
       const sectionObject: SectionObject = {
@@ -251,11 +251,11 @@ export const useWikiPageDataStore = defineStore('wikiPageData', {
     },
 
     async fetchBaseSectionWikiText(section: number) {
-      return await fetchSectionWikiText(this.baseData.baseName, section);
+      return fetchSectionWikiText(this.baseData.baseName, section);
     },
 
     async fetchGalleryData(gallerySectionData: SimplifiedSectionQueryResponseSectionObject) {
-      const gallerySectionText = await this.fetchBaseSectionWikiText(parseInt(gallerySectionData.index));
+      const gallerySectionText = await this.fetchBaseSectionWikiText(Number.parseInt(gallerySectionData.index));
       if (!gallerySectionText) return;
       const picLines = gallerySectionText.split('\n').slice(2, -1); // remove gallery heading and gallery tags
       if (!picLines.length) return;
