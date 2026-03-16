@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'node:url';
-
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
@@ -8,14 +6,11 @@ export default defineConfig({
   //   base: '/Eisvana-Census/',
   plugins: [vue()],
   build: {
-    target: 'ESNext',
-    rollupOptions: {
+    rolldownOptions: {
       input: ['index.html', 'form.html', 'renew.html', 'table.html'],
     },
   },
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
+    tsconfigPaths: true,
   },
 });
