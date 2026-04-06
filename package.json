@@ -22,7 +22,7 @@
     "vue": "^3.5.31"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.5.2",
     "@types/sortablejs": "^1.15.9",
     "@vitejs/plugin-vue": "^6.0.5",
     "oxfmt": "^0.41.0",
