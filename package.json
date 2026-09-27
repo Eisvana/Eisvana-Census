@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/node": "^26.5.1",
     "@types/sortablejs": "^1.15.9",
-    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitejs/plugin-vue": "^6.0.9",
     "oxfmt": "^0.68.0",
     "oxlint": "^1.82.0",
     "oxlint-tsgolint": "^7.0.2001",
